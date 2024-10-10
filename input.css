@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+@layer base {
+  a {
+    @apply inline-block hover:underline underline-offset-8 duration-200 text-lg font-sans font-bold;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply bg-white text-black py-2 px-8 mx-auto md:mx-0 tracking-widest uppercase border-2 border-black hover:bg-black hover:text-white duration-200 text-center font-bold;
+  }
+}
+
+.hero-img {
+  background-image: url(../images/mobile/image-hero.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @media screen and (min-width: 480px) {
+    background-image: url(../images/desktop/image-hero.jpg);
+    background-position: center;
+  }
+}
+
+.flex-center {
+  @apply flex justify-center items-center;
+}
+
+.gradient > * {
+  position: relative;
+  z-index: 0;
+  transition: all 0.3s ease;
+
+  @media screen and (max-width: 768px) {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+.gradient > *:hover {
+  transform: scale(1.05);
+}
+
+.gradient > *::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0%),
+    rgba(0, 0, 0, 90%)
+  );
+}
+
+.gradient > *:hover::after {
+  display: none;
+}
+
+.gradient > *:hover::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  background-color: rgba(250, 250, 250, 50%);
+}
+
+.p-gradient {
+  @apply absolute uppercase bottom-3 md:bottom-6  z-20 left-3 md:left-6 text-white text-xl md:text-2xl;
+}
+
+.gradient > *:hover > p {
+  @apply absolute uppercase bottom-3 md:bottom-6  z-20 left-3 md:left-6 text-black scale-110 font-bold;
+}
+
+.gradient * > p {
+  transition: all 0.3s ease;
+}
+
+.hamburger {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  transition: all 0.25s;
+  position: relative;
+}
+
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background-color: #fff;
+  transition: all 0.5s;
+  transform: rotate(0);
+}
+
+.hamburger-middle {
+  transform: translateY(7px);
+}
+
+.hamburger-bottom {
+  transform: translateY(14px);
+}
+
+.open {
+  transform: rotate(90deg);
+}
+
+.open .hamburger-top {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.open .hamburger-middle {
+  display: none;
+}
+
+.open .hamburger-bottom {
+  transform: rotate(-45deg) translate(-6px, 6px);
+}
